@@ -17,7 +17,8 @@ function getComputerChoice() {
 function getHumanChoice() {
     let userChoice = prompt()
     userChoice = userChoice.trim().toLowerCase();
-    if (userChoice === "rock" || userChoice === "paper" || userChoice === "scissors"){
+    let selection = ["rock", "paper", "scissors"];
+    if (selection.includes(userChoice)){
         if (userChoice == "rock") {
             userChoice = "rock"
         } else if (userChoice == "paper") {
