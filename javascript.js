@@ -1,4 +1,4 @@
-console.log("Hello world!");
+// console.log("Hello world!");
 
 function getComputerChoice() {
     let decider = "";
@@ -12,11 +12,21 @@ function getComputerChoice() {
     }
     console.log(yoNumber)
     console.log(decider)
-    
-
 }
 
+function getHumanChoice() {
+    let userChoice = prompt()
+    if (userChoice == "rock") {
+        userChoice = "rock"
+    } else if (userChoice == "paper") {
+        userChoice = "paper"
+    } else {
+        userChoice = "scissors"
+    }
+    console.log("User choice: " + userChoice)
+}
 
-console.log(getComputerChoice());
+getComputerChoice();
+getHumanChoice();
 
 // console.log(Math.random());
