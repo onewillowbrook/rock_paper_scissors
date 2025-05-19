@@ -16,14 +16,19 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let userChoice = prompt()
-    if (userChoice == "rock") {
-        userChoice = "rock"
-    } else if (userChoice == "paper") {
-        userChoice = "paper"
+    userChoice = userChoice.trim().toLowerCase();
+    if (userChoice === "rock" || userChoice === "paper" || userChoice === "scissors"){
+        if (userChoice == "rock") {
+            userChoice = "rock"
+        } else if (userChoice == "paper") {
+            userChoice = "paper"
+        } else {
+            userChoice = "scissors"
+        }
+        console.log("User choice: " + userChoice)
     } else {
-        userChoice = "scissors"
+        console.log("You must enter 'rock', 'paper', or 'scissors'!")
     }
-    console.log("User choice: " + userChoice)
 }
 
 getComputerChoice();
