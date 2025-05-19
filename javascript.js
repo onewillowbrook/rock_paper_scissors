@@ -3,9 +3,9 @@ console.log("Hello world!");
 function getComputerChoice() {
     let decider = "";
     let yoNumber = Math.random();
-    if (yoNumber <= .33) {
+    if (yoNumber <= 1/3) {
         decider = "rock"
-    } else if (yoNumber <=.66) {
+    } else if (yoNumber <= 2/3) {
         decider = "paper"
     } else {
         decider = "scissors"
