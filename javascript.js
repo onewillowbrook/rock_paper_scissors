@@ -1,5 +1,3 @@
-// console.log("Hello world!");
-
 function getComputerChoice() {
     let decider = "";
     let yoNumber = Math.random();
@@ -10,8 +8,10 @@ function getComputerChoice() {
     } else {
         decider = "scissors"
     }
+    computerChoice = decider
     console.log(yoNumber)
-    console.log(decider)
+    console.log(`Computer chose: ${decider}`)
+    return decider;
 }
 
 function getHumanChoice() {
@@ -19,37 +19,42 @@ function getHumanChoice() {
     userChoice = userChoice.trim().toLowerCase();
     let selection = ["rock", "paper", "scissors"];
     if (selection.includes(userChoice)){
-        if (userChoice == "rock") {
-            userChoice = "rock"
-        } else if (userChoice == "paper") {
-            userChoice = "paper"
-        } else {
-            userChoice = "scissors"
-        }
         console.log("User choice: " + userChoice)
+        return userChoice;
     } else {
         console.log("You must enter 'rock', 'paper', or 'scissors'!")
+        return null;
     }
+    humanChoice = userChoice
+    return userChoice;
 }
 
 let humanScore = 0
 let computerScore = 0
 
-getComputerChoice();
-getHumanChoice();
+humanChoice = ""
+computerChoice = ""
 
 function incrementUser() {
-    humanScore =+
+    humanScore++
     console.log("User wins!")
+    scoreTotal()
 }
 
 function incrementComputer() {
-    computerScore =+
+    computerScore++
     console.log("Computer wins!")
+    scoreTotal()
 }
 
 function tieNoPoints() {
     console.log('Tie! No points awarded!')
+    scoreTotal()
+    
+}
+
+function scoreTotal(){
+    console.log(`Humanscore is: ${humanScore} to Computer Score: ${computerScore}`)
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -61,7 +66,7 @@ function playRound(humanChoice, computerChoice) {
         } else {
             incrementUser()
         }
-    } else if (humanScore === "paper") {
+    } else if (humanChoice === "paper") {
         if (computerChoice === "rock") {
             incrementUser()
         } else if (computerChoice === "paper") {
@@ -80,4 +85,8 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-// console.log(Math.random());
+for (let i = 0; i < 5; i++) {
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+}
