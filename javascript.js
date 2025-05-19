@@ -15,42 +15,47 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let userChoice = prompt()
+    let userChoice = prompt("Enter rock, paper or scissors: ")
+
+    if (userChoice === null) {
+        console.log("Prompt cancelled. Round Skipped.");
+        return null
+    }
     userChoice = userChoice.trim().toLowerCase();
-    let selection = ["rock", "paper", "scissors"];
+    const selection = ["rock", "paper", "scissors"];
     if (selection.includes(userChoice)){
-        console.log("User choice: " + userChoice)
+        console.log("Human chose: " + userChoice)
         return userChoice;
     } else {
         console.log("You must enter 'rock', 'paper', or 'scissors'!")
         return null;
     }
-    humanChoice = userChoice
-    return userChoice;
 }
 
 let humanScore = 0
 let computerScore = 0
 
-humanChoice = ""
-computerChoice = ""
+let humanChoice = ""
+let computerChoice = ""
 
 function incrementUser() {
     humanScore++
     console.log("User wins!")
     scoreTotal()
+    return "user"
 }
 
 function incrementComputer() {
     computerScore++
     console.log("Computer wins!")
     scoreTotal()
+    return "computer"
 }
 
 function tieNoPoints() {
     console.log('Tie! No points awarded!')
     scoreTotal()
-    
+    return "tie"
 }
 
 function scoreTotal(){
@@ -60,27 +65,27 @@ function scoreTotal(){
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === "rock") {
         if (computerChoice === "rock") {
-            tieNoPoints()
+            return tieNoPoints();
         } else if (computerChoice === "paper") {
-            incrementComputer()
+            return incrementComputer();
         } else {
-            incrementUser()
+            return incrementUser();
         }
     } else if (humanChoice === "paper") {
         if (computerChoice === "rock") {
-            incrementUser()
+            return incrementUser();
         } else if (computerChoice === "paper") {
-            tieNoPoints()
+            return tieNoPoints();
         } else {
-            incrementComputer()
+            return incrementComputer();
         }
     } else {
         if (computerChoice === "rock") {
-            incrementComputer()
+            return incrementComputer();
         } else if (computerChoice === "paper") {
-            incrementUser()
+            return incrementUser();
         } else {
-            tieNoPoints()
+            return tieNoPoints();
         }
     }
 }
@@ -93,7 +98,11 @@ for (let i = 0; i < 5; i++) {
         continue;
     }
     let computerChoice = getComputerChoice();
-    playRound(humanChoice, computerChoice);
+    result = playRound(humanChoice, computerChoice);
+    if (result === "tie") {
+        i--;
+        continue;
+    }
 }
 
 if (humanScore > computerScore) {
