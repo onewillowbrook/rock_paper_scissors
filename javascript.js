@@ -87,6 +87,18 @@ function playRound(humanChoice, computerChoice) {
 
 for (let i = 0; i < 5; i++) {
     let humanChoice = getHumanChoice();
+    if (humanChoice === null){
+        console.log("\nInvalid input, round skipped.\n");
+        i--;
+        continue;
+    }
     let computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
 }
+
+if (humanScore > computerScore) {
+    console.log(`Human wins! with: ${humanScore} to the Computers: ${computerScore}`)
+} else {
+    console.log(`Human loses! with: ${humanScore} to the Computers: ${computerScore}`)
+}
+
