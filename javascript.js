@@ -32,7 +32,52 @@ function getHumanChoice() {
     }
 }
 
+let humanScore = 0
+let computerScore = 0
+
 getComputerChoice();
 getHumanChoice();
+
+function incrementUser() {
+    humanScore =+
+    console.log("User wins!")
+}
+
+function incrementComputer() {
+    computerScore =+
+    console.log("Computer wins!")
+}
+
+function tieNoPoints() {
+    console.log('Tie! No points awarded!')
+}
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === "rock") {
+        if (computerChoice === "rock") {
+            tieNoPoints()
+        } else if (computerChoice === "paper") {
+            incrementComputer()
+        } else {
+            incrementUser()
+        }
+    } else if (humanScore === "paper") {
+        if (computerChoice === "rock") {
+            incrementUser()
+        } else if (computerChoice === "paper") {
+            tieNoPoints()
+        } else {
+            incrementComputer()
+        }
+    } else {
+        if (computerChoice === "rock") {
+            incrementComputer()
+        } else if (computerChoice === "paper") {
+            incrementUser()
+        } else {
+            tieNoPoints()
+        }
+    }
+}
 
 // console.log(Math.random());
